@@ -1,0 +1,61 @@
+{
+  // VS Code에서 이 폴더를 열면 "MAPE: 시연 전체 실행"이 자동으로 돌아간다 (처음 한 번 허용 필요)
+  // 수동 실행: Cmd+Shift+P → Tasks: Run Task → MAPE: 시연 전체 실행
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1 API·대시보드",
+      "type": "shell",
+      "command": "node server/api.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "group": "mape", "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "2 mape_link",
+      "type": "shell",
+      "command": "sleep 1 && node server/link.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "group": "mape", "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "3 목데이터",
+      "type": "shell",
+      "command": "sleep 2 && node server/mock.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "group": "mape", "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "4 터널(폰 접속용)",
+      "type": "shell",
+      "command": "sleep 2 && node server/tunnel.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "group": "mape", "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "5 시연 조작기",
+      "type": "shell",
+      "command": "sleep 2 && node server/demo.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "reveal": "always", "focus": true }
+    },
+    {
+      "label": "화면 열기",
+      "type": "shell",
+      "command": "sleep 3 && open http://localhost:4000",
+      "problemMatcher": [],
+      "presentation": { "reveal": "silent", "panel": "shared" }
+    },
+    {
+      "label": "MAPE: 시연 전체 실행",
+      "dependsOn": ["1 API·대시보드", "2 mape_link", "3 목데이터", "4 터널(폰 접속용)", "5 시연 조작기", "화면 열기"],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}

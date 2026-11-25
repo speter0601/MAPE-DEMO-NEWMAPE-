@@ -1,0 +1,18 @@
+{
+  "name": "mape-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MAPE 시연 서버 (외부 패키지 없음, Node 18 이상). 배포는 npm start 하나로 실행",
+  "scripts": {
+    "start": "node server/main.js",
+    "api": "node server/api.js",
+    "link": "node server/link.js",
+    "mock": "node server/mock.js",
+    "mock:fast": "node server/mock.js --speed 3",
+    "demo": "node server/demo.js",
+    "tunnel": "node server/tunnel.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

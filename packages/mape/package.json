@@ -1,0 +1,9 @@
+{
+  "name": "mape",
+  "version": "0.1.0",
+  "description": "mape_link 경로 수집 SDK — 클릭 ID 보관, 자사몰 방문 수집, 구매 포스트백",
+  "main": "index.js",
+  "browser": "index.js",
+  "license": "UNLICENSED",
+  "private": true
+}

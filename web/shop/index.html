@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>순우리 스토어 · 데일리 텀블러</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; color: #1d1d1d; background: #fff; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid #eee; }
+  .brand { font-weight: 900; letter-spacing: .02em; }
+  .cart { font-size: 13px; color: #777; }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 18px 120px; }
+  .img { margin: 18px 0; aspect-ratio: 1 / 1; background: #f3efe7; overflow: hidden; }
+  .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tumbler { width: 34%; height: 62%; background: linear-gradient(90deg, #3f6f5c, #5b8f79 45%, #3f6f5c); border-radius: 10px 10px 16px 16px; position: relative; }
+  .tumbler::before { content: ""; position: absolute; top: -9%; left: -6%; right: -6%; height: 12%; background: #2f2f2f; border-radius: 6px; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  .price { font-size: 24px; font-weight: 800; margin: 8px 0 14px; }
+  .price s { font-size: 14px; color: #aaa; font-weight: 400; margin-left: 6px; }
+  .opt { display: flex; gap: 8px; margin-bottom: 16px; }
+  .opt button { flex: 1; padding: 10px; border: 1px solid #ddd; background: #fff; font-size: 14px; }
+  .opt button.on { border: 2px solid #1d1d1d; font-weight: 700; }
+  .desc { font-size: 14px; color: #555; line-height: 1.6; }
+  .buybar { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid #eee; padding: 12px 18px; }
+  .buybar button { width: 100%; max-width: 520px; display: block; margin: 0 auto; padding: 16px; font-size: 17px; font-weight: 800; background: #1d1d1d; color: #fff; border: 0; }
+  .sheet { display: none; }
+  .sheet.on { display: block; }
+  .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f2f2f2; font-size: 14px; }
+  .done { text-align: center; padding: 60px 0 20px; }
+  .done .ok { font-size: 44px; }
+  .note { margin-top: 26px; font-size: 12px; color: #999; text-align: center; line-height: 1.6; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 6px; border: 1px solid #13824f; color: #13824f; }
+</style>
+</head>
+<body>
+<div class="top"><span class="brand">순우리 스토어</span><span class="cart">장바구니 0</span></div>
+
+<div class="wrap">
+  <!-- 상품 화면 -->
+  <section id="product" class="sheet on">
+    <div class="img"><img src="img/tumbler.jpg" alt="데일리 보온 텀블러 470ml" onerror="this.onerror=null;this.src='img/tumbler.svg'"></div>
+    <h1>데일리 보온 텀블러 470ml</h1>
+    <div class="price"><span id="price">12,900</span>원 <s>18,000원</s></div>
+    <div class="opt" id="opts">
+      <button class="on">포레스트</button><button>차콜</button><button>샌드</button>
+    </div>
+    <p class="desc">12시간 보온 · 24시간 보냉. 매일 들고 다니기 좋은 가벼운 470ml 텀블러입니다.</p>
+  </section>
+
+  <!-- 결제 화면 -->
+  <section id="checkout" class="sheet">
+    <h1 style="margin-top:22px">주문서</h1>
+    <div class="row"><span>상품</span><span>데일리 보온 텀블러 · <b id="optName">포레스트</b></span></div>
+    <div class="row"><span>수량</span><span>1개</span></div>
+    <div class="row"><span>배송비</span><span>무료</span></div>
+    <div class="row"><b>결제 금액</b><b><span id="price2">12,900</span>원</b></div>
+    <p class="desc">시연용 가상 결제입니다. 실제 결제는 일어나지 않습니다.</p>
+  </section>
+
+  <!-- 완료 화면 -->
+  <section id="done" class="sheet">
+    <div class="done">
+      <div class="ok">✓</div>
+      <h1>주문이 완료되었습니다</h1>
+      <p class="desc">주문번호 <b id="orderNo">-</b></p>
+      <p class="desc" id="sdkResult"></p>
+    </div>
+  </section>
+
+  <p class="note">이 상점은 <span class="tag">mape SDK</span> 시연용 가상 자사몰입니다.<br>
+    페이지에 심은 mape.js가 mape_link 클릭 ID를 보관하고, 구매 시 주문을 MAPE로 전송합니다.</p>
+</div>
+
+<div class="buybar"><button id="buy">구매하기</button></div>
+
+<!-- ▼ 셀러가 자사몰에 넣는 코드는 이 두 줄이 전부 -->
+<script src="/sdk/mape.js"></script>
+<script>mape.init({ debug: true });</script>
+<!-- ▲ -->
+
+<script>
+  var PRICE = Number(new URLSearchParams(location.search).get("price")) || 12900;
+  document.getElementById("price").textContent = PRICE.toLocaleString();
+  document.getElementById("price2").textContent = PRICE.toLocaleString();
+  var step = "product";
+  var btn = document.getElementById("buy");
+
+  document.getElementById("opts").addEventListener("click", function (e) {
+    if (e.target.tagName !== "BUTTON") return;
+    [].forEach.call(this.children, function (b) { b.classList.remove("on"); });
+    e.target.classList.add("on");
+    document.getElementById("optName").textContent = e.target.textContent;
+  });
+
+  function show(id) {
+    document.querySelectorAll(".sheet").forEach(function (s) { s.classList.remove("on"); });
+    document.getElementById(id).classList.add("on");
+    window.scrollTo(0, 0);
+  }
+
+  btn.addEventListener("click", function () {
+    if (step === "product") {
+      step = "checkout"; show("checkout"); btn.textContent = PRICE.toLocaleString() + "원 결제하기";
+      mape.page("주문서");
+    } else if (step === "checkout") {
+      step = "done"; btn.disabled = true; btn.textContent = "결제 처리 중...";
+      var orderNo = "SW" + Date.now().toString().slice(-8);
+      document.getElementById("orderNo").textContent = orderNo;
+      // ▼ 구매 완료 시 셀러가 부르는 한 줄
+      mape.purchase({ orderId: orderNo, amount: PRICE }).then(function (r) {
+        show("done");
+        btn.parentNode.style.display = "none";
+        document.getElementById("sdkResult").textContent = r && r.attributed
+          ? "MAPE로 주문 전송 완료 (mape_link 경로 연결됨)"
+          : "mape_link를 거치지 않은 방문이라 전송하지 않았습니다";
+      });
+    }
+  });
+</script>
+</body>
+</html>

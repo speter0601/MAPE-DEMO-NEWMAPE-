@@ -1,0 +1,109 @@
+{
+  "_설명": "광고 계정을 연결하면 MAPE가 기존 광고 소재마다 mape_link를 자동으로 만든다는 설정입니다. 저장하면 바로 반영됩니다.",
+  "publicUrl": "",
+  "_publicUrl설명": "비워두면 터널 터미널이 주소를 자동 등록합니다. 직접 배포한 주소가 있으면 여기에 넣으세요.",
+  "demoProduct": {
+    "_설명": "발표장에서 QR로 살 상품. 홈 > 새 mape_link 만들기 창에 미리 채워집니다. /shop/ 은 mape SDK가 심어진 시연용 자사몰이라 구매 즉시 자동 반영됩니다. 실제 스마트스토어 상품을 쓰려면 주소를 바꾸고 storeKey를 smartstore로 (이 경우 주문 반영은 시연 조작기 Enter).",
+    "name": "데일리텀블러_QR",
+    "target": "/shop/",
+    "price": 12900,
+    "storeKey": "cafe24"
+  },
+  "links": [
+    {
+      "slug": "demo",
+      "name": "데일리텀블러_QR",
+      "channel": "QR 코드",
+      "adSource": null,
+      "storeKey": "cafe24",
+      "target": "/shop/",
+      "price": 12900,
+      "spend": 0,
+      "isDemo": true
+    },
+    {
+      "slug": "ig-story-a",
+      "name": "인스타_스토리_A소재",
+      "channel": "인스타 스토리",
+      "adSource": "meta",
+      "storeKey": "smartstore",
+      "target": "https://smartstore.naver.com/",
+      "price": 24900,
+      "spend": 820000,
+      "weight": 5,
+      "conv": 0.045,
+      "ctr": 0.011,
+      "brand": 1.2
+    },
+    {
+      "slug": "ig-reels-b",
+      "name": "인스타_릴스_B소재",
+      "channel": "인스타 릴스",
+      "adSource": "meta",
+      "storeKey": "cafe24",
+      "target": "https://example.com/",
+      "price": 31000,
+      "spend": 760000,
+      "weight": 4,
+      "conv": 0.022,
+      "ctr": 0.006,
+      "brand": 1.5
+    },
+    {
+      "slug": "ig-profile",
+      "name": "인스타_프로필링크",
+      "channel": "인스타 프로필",
+      "adSource": "meta",
+      "storeKey": "cafe24",
+      "target": "https://example.com/",
+      "price": 31000,
+      "spend": 0,
+      "weight": 2,
+      "conv": 0.06,
+      "ctr": 0.02,
+      "brand": 1.0
+    },
+    {
+      "slug": "nv-powerlink",
+      "name": "네이버_파워링크_브랜드키워드",
+      "channel": "네이버 파워링크",
+      "adSource": "naver",
+      "storeKey": "smartstore",
+      "target": "https://smartstore.naver.com/",
+      "price": 24900,
+      "spend": 640000,
+      "weight": 4,
+      "conv": 0.07,
+      "ctr": 0.032,
+      "brand": 0.6
+    },
+    {
+      "slug": "nv-shopping",
+      "name": "네이버_쇼핑검색_대표상품",
+      "channel": "네이버 쇼핑검색",
+      "adSource": "naver",
+      "storeKey": "smartstore",
+      "target": "https://smartstore.naver.com/",
+      "price": 19900,
+      "spend": 480000,
+      "weight": 3,
+      "conv": 0.055,
+      "ctr": 0.025,
+      "brand": 0.5
+    },
+    {
+      "slug": "kakao-channel",
+      "name": "카카오채널_쿠폰메시지",
+      "channel": "카카오채널",
+      "adSource": "kakao",
+      "storeKey": "cafe24",
+      "target": "https://example.com/",
+      "price": 31000,
+      "spend": 300000,
+      "weight": 2,
+      "conv": 0.03,
+      "ctr": 0.04,
+      "brand": 0.9
+    }
+  ]
+}

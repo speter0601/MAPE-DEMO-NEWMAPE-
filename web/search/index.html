@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>텀블러 : 찾아줘 검색 (시연용 가상 포털)</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; color: #222; background: #f5f6f7; font-size: 14px; }
+  a { color: inherit; text-decoration: none; }
+  .top { background: #fff; border-bottom: 1px solid #e3e5e8; }
+  .top-in { max-width: 1100px; margin: 0 auto; padding: 18px 20px 0; }
+  .sb { display: flex; align-items: center; gap: 18px; }
+  .brand { font-size: 26px; font-weight: 900; color: #3a57c4; letter-spacing: -.03em; }
+  .brand small { font-size: 11px; color: #8a8f96; font-weight: 600; margin-left: 4px; letter-spacing: 0; }
+  .box { flex: 1; max-width: 620px; display: flex; border: 2px solid #3a57c4; border-radius: 26px; overflow: hidden; background: #fff; }
+  .box input { flex: 1; border: 0; padding: 12px 18px; font-size: 17px; }
+  .box input:focus { outline: none; }
+  .box button { border: 0; background: #3a57c4; color: #fff; padding: 0 20px; font-weight: 700; }
+  .tabs { display: flex; gap: 22px; margin-top: 14px; }
+  .tabs a { padding: 10px 2px; color: #555; font-size: 15px; }
+  .tabs a.on { color: #222; font-weight: 800; box-shadow: inset 0 -3px 0 #222; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 20px 60px; display: grid; grid-template-columns: 1fr 300px; gap: 16px; }
+  .sec { background: #fff; border: 1px solid #e3e5e8; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+  .sec-h { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .sec-h h2 { margin: 0; font-size: 18px; }
+  .adlabel { font-size: 12px; color: #8a8f96; border: 1px solid #d5d8dc; border-radius: 3px; padding: 0 5px; }
+  .ad { padding: 14px 0; border-top: 1px solid #f0f1f3; }
+  .ad:first-of-type { border-top: 0; }
+  .ad .url { font-size: 13px; color: #1d7d3f; display: flex; gap: 6px; align-items: center; }
+  .ad .url b { color: #222; font-weight: 700; }
+  .ad .ttl { font-size: 18px; color: #2341a8; font-weight: 700; margin: 4px 0; display: inline-block; }
+  .ad .desc { color: #555; line-height: 1.6; }
+  .ad .ext { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .ad .ext span { font-size: 12px; border: 1px solid #e3e5e8; border-radius: 14px; padding: 3px 10px; color: #444; }
+  .shop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .item { border: 1px solid #f0f1f3; border-radius: 8px; overflow: hidden; }
+  .item .pic { aspect-ratio: 1; overflow: hidden; background: #f3f3f0; }
+  .item .pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .item .pic i { width: 30%; height: 62%; border-radius: 6px 6px 10px 10px; display: block; }
+  .item .info { padding: 8px 10px 10px; font-size: 13px; line-height: 1.45; }
+  .item .p { font-weight: 800; font-size: 15px; margin-top: 2px; }
+  .item .s { color: #8a8f96; font-size: 12px; }
+  .blog { padding: 12px 0; border-top: 1px solid #f0f1f3; }
+  .blog:first-of-type { border-top: 0; }
+  .blog .t { font-size: 16px; color: #2341a8; font-weight: 700; }
+  .blog .d { color: #666; margin-top: 4px; line-height: 1.5; }
+  .side .sec h3 { margin: 0 0 10px; font-size: 15px; }
+  .side li { margin: 6px 0; color: #444; }
+  .notice { text-align: center; color: #9aa0a6; font-size: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <div class="sb">
+    <span class="brand">찾아줘<small>시연용 가상 검색 포털</small></span>
+    <form class="box" onsubmit="return false"><input value="텀블러"><button>검색</button></form>
+  </div>
+  <div class="tabs"><a class="on">통합</a><a>쇼핑</a><a>이미지</a><a>블로그</a><a>지식iN</a><a>뉴스</a></div>
+</div></div>
+
+<div class="wrap">
+  <div>
+    <!-- 검색 광고 영역 -->
+    <section class="sec" id="powerads">
+      <div class="sec-h"><h2>'텀블러' 관련 광고</h2><span class="adlabel">광고</span></div>
+      <div class="ad" data-adv="루미컵">
+        <div class="url"><b>루미컵</b> lumicup.example</div>
+        <a class="ttl">텀블러 최대 70% 할인 · 오늘 출발</a>
+        <div class="desc">스테인리스 텀블러 전 품목 할인, 2만원 이상 무료배송. 각인 서비스 무료.</div>
+        <div class="ext"><span>★ 4.8 (리뷰 12,301)</span><span>오늘출발</span><span>무료배송</span></div>
+      </div>
+      <div class="ad" data-adv="데일리보틀">
+        <div class="url"><b>데일리보틀</b> dailybottle.example</div>
+        <a class="ttl">텀블러 할인 · 1+1 이벤트 진행중</a>
+        <div class="desc">보온보냉 텀블러 1+1, 사무실 필수템. 회원가입 시 3천원 쿠폰.</div>
+        <div class="ext"><span>1+1</span><span>쿠폰</span></div>
+      </div>
+      <div class="ad" data-adv="순우리 스토어" data-mine="1">
+        <div class="url"><b>순우리 스토어</b> smartstore.example/sunuri</div>
+        <a class="ttl">데일리 보온 텀블러 470ml</a>
+        <div class="desc">12시간 보온 · 24시간 보냉. 매일 들고 다니기 좋은 가벼운 텀블러.</div>
+        <div class="ext"><span>스토어찜</span></div>
+      </div>
+      <div class="ad" data-adv="캠프앤컵">
+        <div class="url"><b>캠프앤컵</b> campncup.example</div>
+        <a class="ttl">캠핑 텀블러 할인 특가</a>
+        <div class="desc">대용량 1L 캠핑 텀블러, 빨대 뚜껑 포함. 단체 주문 할인.</div>
+        <div class="ext"><span>★ 4.6 (리뷰 3,120)</span></div>
+      </div>
+      <div class="ad" data-adv="오피스몰">
+        <div class="url"><b>오피스몰</b> officemall.example</div>
+        <a class="ttl">텀블러 · 머그 · 사무용품 최저가</a>
+        <div class="desc">사무실 텀블러부터 머그컵까지 한 번에. 법인 결제 가능.</div>
+      </div>
+    </section>
+
+    <!-- 쇼핑 영역 -->
+    <section class="sec" id="shopping">
+      <div class="sec-h"><h2>쇼핑</h2><span class="adlabel">광고</span></div>
+      <div class="shop">
+        <div class="item" data-adv="루미컵"><div class="pic"><img src="/shop/img/tumbler-blue.svg" alt=""></div><div class="info">루미컵 스텐 텀블러 600ml<div class="p">15,900원</div><div class="s">리뷰 8,214 · 무료배송</div></div></div>
+        <div class="item" data-adv="데일리보틀"><div class="pic"><img src="/shop/img/tumbler-tan.svg" alt=""></div><div class="info">데일리보틀 1+1 텀블러<div class="p">19,800원</div><div class="s">리뷰 2,031</div></div></div>
+        <div class="item" data-adv="순우리 스토어" data-mine="1"><div class="pic"><img src="/shop/img/tumbler.jpg" alt="" onerror="this.onerror=null;this.src='/shop/img/tumbler.svg'"></div><div class="info">데일리 보온 텀블러 470ml<div class="p">12,900원</div><div class="s">리뷰 41</div></div></div>
+        <div class="item" data-adv="캠프앤컵"><div class="pic"><img src="/shop/img/tumbler-black.svg" alt=""></div><div class="info">캠핑 텀블러 1L<div class="p">24,500원</div><div class="s">리뷰 3,120 · 무료배송</div></div></div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h"><h2>블로그</h2></div>
+      <div class="blog"><a class="t">텀블러 5종 한 달 써본 솔직 후기</a><div class="d">보온력, 무게, 세척 편의성까지 직접 비교해봤어요. 출근용으로는 500ml 안팎이...</div></div>
+      <div class="blog"><a class="t">사무실 텀블러 추천, 이건 꼭 확인하세요</a><div class="d">뚜껑 구조와 고무 패킹 분리 여부가 생각보다 중요합니다...</div></div>
+      <div class="blog"><a class="t">가성비 텀블러 고르는 법 (2026)</a><div class="d">만 원대 텀블러도 충분히 좋은 제품이 많아요. 핵심은 이중 진공 구조인지...</div></div>
+    </section>
+    <p class="notice">이 화면은 MAPE 현장 점검(mape_eye) 시연을 위한 가상 검색 포털입니다. 등장하는 업체와 광고는 모두 가상입니다.</p>
+  </div>
+  <aside class="side">
+    <section class="sec"><h3>연관 검색어</h3><ul style="padding-left:18px;margin:0"><li>텀블러 추천</li><li>보온 텀블러</li><li>사무실 텀블러</li><li>텀블러 각인</li><li>캠핑 텀블러</li></ul></section>
+  </aside>
+</div>
+
+<!-- ▼ 실제 확장 프로그램에서는 content script로 주입되는 부분 -->
+<script src="/eye/mape-eye.js"></script>
+</body>
+</html>
